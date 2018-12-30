@@ -1,0 +1,51 @@
+@import "~normalize.css";
+@import "./variables";
+@import "./placeholder";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.app {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 @mobile-container-padding;
+
+  @media (min-width: @break-t-min) {
+    padding: 0 @desktop-container-padding;
+  }
+
+  @media (min-width: @break-d-min) {
+    padding: 0 @desktop-container-padding;
+  }
+
+  @media (min-width: @container-width) {
+    width: 100%;
+    max-width: @dashboard--container-width;
+    padding: 0 @tablet-container-padding;
+  }
+}
+
+.placeholder {
+  padding: 20px;
+}

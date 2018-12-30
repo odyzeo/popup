@@ -1,0 +1,49 @@
+@import './variables';
+
+.placeholder {
+  padding: 20px;
+}
+
+.placeholder__button {
+  display: inline-block;
+  padding: @btn-padding;
+  border-radius: @btn-radius;
+  line-height: 1; // Normalize default button line-height
+  vertical-align: top; // Trick to get rid off underneath space in div because of inline-block
+
+  margin-right: 20px;
+  /**
+   * Default button style
+   */
+  color: @btn-color;
+  background: @color--default;
+  font-size: @font-size;
+
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+
+  transition: background-color .2s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(@color--default, 5%);
+    color: @btn-color;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  &[disabled] {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+.placeholder__button--primary {
+  background-color: @btn-background;
+
+  &:hover {
+    background-color: darken(@btn-background, 5%);
+  }
+}
