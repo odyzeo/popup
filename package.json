@@ -18,12 +18,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name form-item ./src/components/FormItem.vue",
+    "build-lib": "vue-cli-service build --target lib --name popup ./src/plugin/popup.js",
     "lint": "vue-cli-service lint"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/odyzeo/form-item.git"
+    "url": "https://github.com/odyzeo/popup.git"
   },
   "files": [
     "dist/*",

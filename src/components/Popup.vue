@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Popup from '../plugin';
+import popup from '../plugin/popup';
 
 export default {
   name: 'OdyzeoPopup',
@@ -47,7 +47,7 @@ export default {
    * Sets global listeners
    */
   beforeMount() {
-    Popup.event.$on('toggle', this.handleToggleEvent);
+    popup.event.$on('toggle', this.handleToggleEvent);
   },
 
   mounted() {
@@ -55,7 +55,7 @@ export default {
   },
 
   beforeDestroy() {
-    Popup.event.$off('toggle', this.handleToggleEvent);
+    popup.event.$off('toggle', this.handleToggleEvent);
 
     this.close();
 

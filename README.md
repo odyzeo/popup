@@ -7,7 +7,7 @@ and renderless logic.
 
 ## Usage
 ```
-  import Plugin from './plugin';
+  import Popup from '@odyzeo/popup';
   
   Vue.use(Plugin);
 ```
@@ -48,13 +48,9 @@ and renderless logic.
 ### Globally declared close method
 ```
 <script>
-import Popup from './components/Popup.vue';
-
 export default {
   name: 'App',
-  components: {
-    Popup,
-  },
+ 
   methods: {
     closeSpecificPopup(name = null) {
       if (name) {

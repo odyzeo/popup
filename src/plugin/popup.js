@@ -1,4 +1,4 @@
-import Popup from './components/Popup.vue';
+import Popup from '../components/Popup.vue';
 
 const Plugin = {
   install(Vue, options = {}) {
@@ -9,20 +9,21 @@ const Plugin = {
       return;
     }
 
+    const defaultComponentName = 'Popup';
+
     this.currentPopup = null;
     this.installed = true;
     this.event = new Vue();
-    const defaultComponentName = 'Popup';
     this.componentName = options.componentName || defaultComponentName;
 
     /**
      * Plugin API
      */
     Vue.prototype.$popup = {
-      show(modal) {
-        if (typeof modal === 'string' && !this.currentPopup) {
-          this.currentPopup = modal;
-          Plugin.event.$emit('toggle', modal, true);
+      show(name) {
+        if (typeof name === 'string' && !this.currentPopup) {
+          this.currentPopup = name;
+          Plugin.event.$emit('toggle', name, true);
         }
       },
 

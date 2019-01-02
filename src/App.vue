@@ -60,29 +60,14 @@
           </div>
         </template>
       </popup>
-
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
-      <br><br><br><br><br><br> <h2>Jozef</h2>
     </div>
   </div>
 </template>
 
 <script>
-import Popup from './components/Popup.vue';
 
 export default {
   name: 'App',
-  components: {
-    Popup,
-  },
   methods: {
     closeSpecificPopup(name = null) {
       if (name) {

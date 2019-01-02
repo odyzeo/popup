@@ -1,11 +1,11 @@
 import Vue from 'vue';
-import Plugin from './plugin';
+import popup from './plugin/popup';
 
 import App from './App.vue';
 
 Vue.config.productionTip = false;
 
-Vue.use(Plugin);
+Vue.use(popup);
 
 new Vue({
   render: h => h(App),
