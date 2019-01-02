@@ -20,7 +20,7 @@ const Plugin = {
      */
     Vue.prototype.$popup = {
       show(modal) {
-        if (typeof modal === 'string') {
+        if (typeof modal === 'string' && !this.currentPopup) {
           this.currentPopup = modal;
           Plugin.event.$emit('toggle', modal, true);
         }
@@ -28,6 +28,8 @@ const Plugin = {
 
       hide(name) {
         Plugin.event.$emit('toggle', name, false);
+
+        this.currentPopup = null;
       },
     };
     /**

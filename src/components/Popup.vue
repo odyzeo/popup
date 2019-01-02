@@ -111,6 +111,7 @@ export default {
     },
     close() {
       this.isOpen = false;
+      this.$popup.currentPopup = null;
 
       document.body.style.top = null;
       document.body.style.width = null;

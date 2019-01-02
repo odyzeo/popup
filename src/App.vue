@@ -2,7 +2,9 @@
   <div
     id="app"
     class="app">
-    <div class="container">
+    <div
+      class="container"
+    >
       <h1>Popups</h1>
       <button
         type="button"
@@ -58,6 +60,17 @@
           </div>
         </template>
       </popup>
+
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
+      <br><br><br><br><br><br> <h2>Jozef</h2>
     </div>
   </div>
 </template>

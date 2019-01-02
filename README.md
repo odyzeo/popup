@@ -99,7 +99,7 @@ yarn serve
 # TODO
 - proper readme
 - npm package support
-- drag n drop
+- drag
 - dynamic creation of modal
 - customizable options
 - prop-like trigger
