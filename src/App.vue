@@ -22,6 +22,7 @@
 
       <popup
         name="Popup1"
+        type="absolute"
       >
         <template slot-scope="scope">
           <div class="placeholder">

@@ -7,9 +7,9 @@ and renderless logic.
 
 ## Usage
 ```
-  import Popup from '@odyzeo/popup';
-  
-  Vue.use(Plugin);
+import Popup from '@odyzeo/popup';
+
+Vue.use(Plugin);
 ```
 
 ```
@@ -44,6 +44,12 @@ and renderless logic.
   </div>
 </template>
 ```
+
+### Props
+| Property name | Type | Default value | Description |
+| ------------- | ---- | ------------- | ----------- |
+| `name` | string | none(required) | Set global selector for your popup |
+| `type` | string | `fixed` | Change behaviour inside document: <br><br> `fixed` - prevents document scrolling, <br> `absolute` - enable document scrolling |
 
 ### Globally declared close method
 ```
@@ -88,7 +94,7 @@ npm run serve
 
 or
 
-```bash
+```
 yarn serve
 ```
 

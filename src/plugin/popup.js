@@ -19,6 +19,7 @@ const Plugin = {
     /**
      * Plugin API
      */
+    // eslint-disable-next-line
     Vue.prototype.$popup = {
       show(name) {
         if (typeof name === 'string' && !this.currentPopup) {

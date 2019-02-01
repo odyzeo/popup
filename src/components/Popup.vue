@@ -1,7 +1,7 @@
 <template>
   <div
     class="popup"
-    :class="{'popup--open': isOpen}"
+    :class="[isOpen ? 'popup--open' : '', `popup--${type}`]"
     @click.prevent="close"
     @transitionend="handleClose($event)"
   >
@@ -34,6 +34,10 @@ export default {
       required: true,
       type: String,
     },
+    type: {
+      type: String,
+      default: 'fixed',
+    },
   },
 
   data() {
@@ -58,10 +62,7 @@ export default {
     popup.event.$off('toggle', this.handleToggleEvent);
 
     this.close();
-
-    if (document.body.contains(this.$el)) {
-      document.body.removeChild(this.$el);
-    }
+    this.removePopupFromDOM();
   },
 
   methods: {
@@ -103,9 +104,9 @@ export default {
       this.isOpen = true;
       this.scrollTop = window.pageYOffset || document.body.scrollTop;
 
-      document.body.style.width = `${document.body.clientWidth}px`;
-      document.body.classList.add('open-popup');
-      document.body.style.top = `-${this.scrollTop}px`;
+      if (this.type === 'fixed') {
+        this.bodyStyles('add');
+      }
 
       window.addEventListener('keydown', this.escClose);
     },
@@ -113,12 +114,28 @@ export default {
       this.isOpen = false;
       this.$popup.currentPopup = null;
 
-      document.body.style.top = null;
-      document.body.style.width = null;
-      document.body.classList.remove('open-popup');
-      window.scrollTo(0, this.scrollTop);
+      if (this.type === 'fixed') {
+        this.bodyStyles('remove');
+      }
 
       window.removeEventListener('keydown', this.escClose);
+    },
+    removePopupFromDOM() {
+      if (document.body.contains(this.$el)) {
+        document.body.removeChild(this.$el);
+      }
+    },
+    bodyStyles(action) {
+      if (action === 'add') {
+        document.body.style.width = `${document.body.clientWidth}px`;
+        document.body.classList.add('open-popup');
+        document.body.style.top = `-${this.scrollTop}px`;
+      } else if (action === 'remove') {
+        document.body.style.top = null;
+        document.body.style.width = null;
+        document.body.classList.remove('open-popup');
+        window.scrollTo(0, this.scrollTop);
+      }
     },
   },
 };
