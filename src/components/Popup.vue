@@ -1,7 +1,7 @@
 <template>
   <div
     class="popup"
-    :class="[isOpen ? 'popup--open' : '', `popup--${type}`]"
+    :class="[classType, `popup--${type}`]"
     @click.prevent="close"
     @transitionend="handleClose($event)"
   >
@@ -45,6 +45,12 @@ export default {
       isOpen: false,
       scrollTop: null,
     };
+  },
+
+  computed: {
+    classType() {
+      return this.isOpen ? 'popup--open' : '';
+    },
   },
 
   /**
@@ -105,7 +111,7 @@ export default {
       this.scrollTop = window.pageYOffset || document.body.scrollTop;
 
       if (this.type === 'fixed') {
-        this.bodyStyles('add');
+        this.addBodyStyles();
       }
 
       window.addEventListener('keydown', this.escClose);
@@ -115,7 +121,7 @@ export default {
       this.$popup.currentPopup = null;
 
       if (this.type === 'fixed') {
-        this.bodyStyles('remove');
+        this.removeBoyStyles();
       }
 
       window.removeEventListener('keydown', this.escClose);
@@ -125,17 +131,16 @@ export default {
         document.body.removeChild(this.$el);
       }
     },
-    bodyStyles(action) {
-      if (action === 'add') {
-        document.body.style.width = `${document.body.clientWidth}px`;
-        document.body.classList.add('open-popup');
-        document.body.style.top = `-${this.scrollTop}px`;
-      } else if (action === 'remove') {
-        document.body.style.top = null;
-        document.body.style.width = null;
-        document.body.classList.remove('open-popup');
-        window.scrollTo(0, this.scrollTop);
-      }
+    addBodyStyles() {
+      document.body.style.width = `${document.body.clientWidth}px`;
+      document.body.classList.add('open-popup');
+      document.body.style.top = `-${this.scrollTop}px`;
+    },
+    removeBoyStyles() {
+      document.body.style.top = null;
+      document.body.style.width = null;
+      document.body.classList.remove('open-popup');
+      window.scrollTo(0, this.scrollTop);
     },
   },
 };

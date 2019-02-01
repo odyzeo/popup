@@ -88,19 +88,17 @@ this.$popup.currentPopup
 
 ## Development
 
-```
+```bash
 npm run serve
 ```
 
 or
 
-```
+```bash
 yarn serve
 ```
 
 # TODO
-- proper readme
-- npm package support
 - drag
 - dynamic creation of modal
 - customizable options
