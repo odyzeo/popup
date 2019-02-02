@@ -12,37 +12,37 @@ import Popup from '@odyzeo/popup';
 Vue.use(Plugin);
 ```
 
+In your template:
 ```
-<template>
-  <div>
-      <button
-        type="button"         
-        @click.prevent="$popup.show('Popup1')"
-      >Popup 1
-      </button>
-        
-      <popup
-        name="Popup1"
-      >
-        <template slot-scope="scope">
-          <div class="placeholder">
-            Some kind of content!
-            <br><br>
-            <button              
-              type="button"
-            >Accept
-            </button>
+<button
+  type="button"         
+  @click.prevent="$popup.show('Popup1')"
+>Popup 1
+</button>
+```
 
-            <button
-              type="button"              
-              @click.prevent="closeSpecificPopup($popup.currentPopup)"
-            >Close
-            </button>
-          </div>
-        </template>
-      </popup>
-  </div>
-</template>
+Anywhere else in your project:
+```
+<popup
+  name="Popup1"
+>
+  <template slot-scope="scope">
+    <div class="placeholder">
+      Some kind of content!
+      <br><br>
+      <button              
+        type="button"
+      >Accept
+      </button>
+
+      <button
+        type="button"              
+        @click.prevent="closeSpecificPopup($popup.currentPopup)"
+      >Close
+      </button>
+    </div>
+  </template>
+</popup>
 ```
 
 ### Props
@@ -103,3 +103,4 @@ yarn serve
 - dynamic creation of modal
 - customizable options
 - prop-like trigger
+- add tests

@@ -121,7 +121,7 @@ export default {
       this.$popup.currentPopup = null;
 
       if (this.type === 'fixed') {
-        this.removeBoyStyles();
+        this.removeBodyStyles();
       }
 
       window.removeEventListener('keydown', this.escClose);
@@ -136,7 +136,7 @@ export default {
       document.body.classList.add('open-popup');
       document.body.style.top = `-${this.scrollTop}px`;
     },
-    removeBoyStyles() {
+    removeBodyStyles() {
       document.body.style.top = null;
       document.body.style.width = null;
       document.body.classList.remove('open-popup');
