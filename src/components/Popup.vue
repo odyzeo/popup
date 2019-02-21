@@ -114,6 +114,9 @@ export default {
         this.addBodyStyles();
       }
 
+      setTimeout(() => {
+        document.addEventListener('click', this.offClick);
+      });
       window.addEventListener('keydown', this.escClose);
     },
     close() {
@@ -124,6 +127,7 @@ export default {
         this.removeBodyStyles();
       }
 
+      document.removeEventListener('click', this.offClick);
       window.removeEventListener('keydown', this.escClose);
     },
     removePopupFromDOM() {
@@ -141,6 +145,11 @@ export default {
       document.body.style.width = null;
       document.body.classList.remove('open-popup');
       window.scrollTo(0, this.scrollTop);
+    },
+    offClick(ev) {
+      if (!this.$el.contains(ev.target)) {
+        this.close();
+      }
     },
   },
 };
