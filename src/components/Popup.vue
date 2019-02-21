@@ -114,6 +114,10 @@ export default {
         this.addBodyStyles();
       }
 
+      /**
+       * Need to add listener to end of Call Stack.
+       * this.$nextTick can't be used because it's still in component.
+       */
       setTimeout(() => {
         document.addEventListener('click', this.offClick);
       });
