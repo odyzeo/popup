@@ -9,23 +9,21 @@ and renderless logic.
 ```
 import Popup from '@odyzeo/popup';
 
-Vue.use(Plugin);
+Vue.use(Popup);
 ```
 
 In your template:
 ```
 <button
   type="button"         
-  @click.prevent="$popup.show('Popup1')"
+  @click.prevent="$popup.show('example')"
 >Popup 1
 </button>
 ```
 
 Anywhere else in your project:
 ```
-<popup
-  name="Popup1"
->
+<popup name="example">
   <template slot-scope="scope">
     <div class="placeholder">
       Some kind of content!
@@ -37,7 +35,7 @@ Anywhere else in your project:
 
       <button
         type="button"              
-        @click.prevent="closeSpecificPopup($popup.currentPopup)"
+        @click.prevent="$popup.hide('example')"
       >Close
       </button>
     </div>
@@ -54,16 +52,10 @@ Anywhere else in your project:
 ### Globally declared close method
 ```
 <script>
+import '@odyzeo/popup/dist/popup.css';
+
 export default {
   name: 'App',
- 
-  methods: {
-    closeSpecificPopup(name = null) {
-      if (name) {
-        this.$popup.hide(name);
-      }
-    },
-  },
 };
 </script>
 ```
