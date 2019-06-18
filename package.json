@@ -1,76 +1,109 @@
 {
-  "name": "@odyzeo/popup",
-  "version": "1.1.4",
-  "description": "Odyzeo popup component with Vue",
-  "main": "dist/popup.umd.js",
-  "keywords": [
-    "odyzeo",
-    "popup",
-    "renderles",
-    "plugin",
-    "vue"
-  ],
-  "author": "Odyzeo <tomas.zamba@odyzeo.com, svetozar.sadecky@odyzeo.com> (https://odyzeo.com)",
-  "publishConfig": {
-    "access": "public"
-  },
-  "license": "ISC",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name popup ./src/plugin/popup.js",
-    "lint": "vue-cli-service lint"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/odyzeo/popup.git"
-  },
-  "files": [
-    "dist/*",
-    "src/*",
-    "public/*",
-    "*.json",
-    ".js"
-  ],
-  "dependencies": {
-    "normalize.css": "^8.0.0",
-    "vue": "^2.5.17"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "@vue/eslint-config-airbnb": "^3.0.5",
-    "less": "^3.0.4",
-    "less-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.17"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/recommended",
-      "@vue/airbnb"
+    "name": "@odyzeo/popup",
+    "version": "1.1.4",
+    "description": "Odyzeo popup component with Vue",
+    "main": "dist/popup.umd.js",
+    "keywords": [
+        "odyzeo",
+        "popup",
+        "renderles",
+        "plugin",
+        "vue"
     ],
-    "rules": {
-      "no-underscore-dangle": 0,
-      "vue/html-self-closing": 0,
-      "vue/attributes-order": 0
+    "author": "Odyzeo <tomas.zamba@odyzeo.com, svetozar.sadecky@odyzeo.com> (https://odyzeo.com)",
+    "publishConfig": {
+        "access": "public"
     },
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "license": "ISC",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "build-lib": "vue-cli-service build --target lib --name popup ./src/plugin/popup.js",
+        "lint": "vue-cli-service lint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/odyzeo/popup.git"
+    },
+    "files": [
+        "dist/*",
+        "src/*",
+        "public/*",
+        "*.json",
+        ".js"
+    ],
+    "dependencies": {
+        "normalize.css": "^8.0.0",
+        "vue": "^2.6.10"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.8.0",
+        "@vue/cli-plugin-eslint": "^3.8.0",
+        "@vue/cli-service": "^3.8.4",
+        "@vue/eslint-config-airbnb": "^4.0.0",
+        "less": "^3.0.4",
+        "less-loader": "^5.0.0",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "browser": true,
+            "es6": true
+        },
+        "extends": [
+            "plugin:vue/recommended",
+            "@vue/airbnb"
+        ],
+        "rules": {
+            "indent": 0,
+            "vue/script-indent": [
+                2,
+                4
+            ],
+            "vue/html-indent": [
+                2,
+                4
+            ],
+            "vue/require-v-for-key": 1,
+            "vue/html-self-closing": [
+                2,
+                {
+                    "html": {
+                        "normal": "never",
+                        "component": "never"
+                    }
+                }
+            ],
+            "camelcase": 0,
+            "import/extensions": [
+                2,
+                "ignorePackages",
+                {
+                    "js": "never",
+                    "vue": "never"
+                }
+            ],
+            "import/prefer-default-export": 0,
+            "no-param-reassign": [
+                2,
+                {
+                    "props": false
+                }
+            ]
+        },
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
 }
