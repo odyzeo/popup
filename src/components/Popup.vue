@@ -3,7 +3,6 @@
         :class="[classType, `popup--${type}`]"
         class="popup"
         @click.prevent="close"
-        @transitionend="handleClose($event)"
     >
         <div
             class="popup__inner"
@@ -18,7 +17,10 @@
                 </slot>
             </div>
 
-            <slot :close="close"></slot>
+            <slot
+                :close="close"
+                :ok="ok"
+            ></slot>
         </div>
     </div>
 </template>
@@ -83,22 +85,11 @@ export default {
         },
         toggle(state) {
             if (state) {
-                this.open();
-
+                this.show();
                 return;
             }
 
             this.close();
-        },
-        handleClose(ev) {
-            setTimeout(() => {
-                const isHidden = ev.propertyName === 'visibility'
-                    && window.getComputedStyle(this.$el).visibility === 'hidden';
-
-                if (isHidden) {
-                    this.close();
-                }
-            });
         },
         escClose(ev) {
             if (ev.keyCode === 27) {
@@ -106,7 +97,7 @@ export default {
                 this.close();
             }
         },
-        open() {
+        show() {
             this.isOpen = true;
             this.scrollTop = window.pageYOffset || document.body.scrollTop;
 
@@ -122,8 +113,17 @@ export default {
                 document.addEventListener('click', this.offClick);
             });
             window.addEventListener('keydown', this.escClose);
+
+            this.$emit('show', this.name);
+        },
+        ok() {
+            this.closePopup();
         },
         close() {
+            this.closePopup();
+            this.$emit('close', this.name);
+        },
+        closePopup() {
             this.isOpen = false;
             this.$popup.currentPopup = null;
 

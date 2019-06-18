@@ -26,14 +26,17 @@
             <popup
                 name="Popup1"
                 type="absolute"
+                @close="onClose"
+                @show="onShow"
             >
-                <template slot-scope="scope">
+                <template #default="{ ok }">
                     <div class="placeholder">
                         Some kind of content!
                         <br><br>
                         <button
                             class="placeholder__button placeholder__button--primary"
                             type="button"
+                            @click.prevent="ok"
                         >
                             Accept
                         </button>
@@ -51,8 +54,10 @@
 
             <popup
                 name="Popup2"
+                @close="onClose"
+                @show="onShow"
             >
-                <template slot-scope="scope">
+                <template #default="{ close }">
                     <div class="placeholder">
                         I am the second popup on this instance,
                         pretty cool ey?
@@ -60,7 +65,7 @@
                         <button
                             type="button"
                             class="placeholder__button"
-                            @click.prevent="scope.close"
+                            @click.prevent="close"
                         >
                             Close
                         </button>
@@ -80,6 +85,14 @@ export default {
             if (name) {
                 this.$popup.hide(name);
             }
+        },
+        onClose(popup) {
+            // eslint-disable-next-line no-console
+            console.log(`Closed popup ${popup}`);
+        },
+        onShow(popup) {
+            // eslint-disable-next-line no-console
+            console.log(`Opened popup ${popup}`);
         },
     },
 };
