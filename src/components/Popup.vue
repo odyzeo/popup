@@ -2,7 +2,7 @@
     <div
         :class="[classType, `popup--${type}`]"
         class="popup"
-        @click.prevent="close"
+        @click.prevent="onPopupClick"
     >
         <div
             class="popup__inner"
@@ -39,6 +39,14 @@ export default {
         type: {
             type: String,
             default: 'fixed',
+        },
+        disableOffClick: {
+            type: Boolean,
+            default: false,
+        },
+        disableEsc: {
+            type: Boolean,
+            default: false,
         },
     },
 
@@ -105,14 +113,19 @@ export default {
                 this.addBodyStyles();
             }
 
-            /**
-             * Need to add listener to end of Call Stack.
-             * this.$nextTick can't be used because it's still in component.
-             */
-            setTimeout(() => {
-                document.addEventListener('click', this.offClick);
-            });
-            window.addEventListener('keydown', this.escClose);
+            if (!this.disableOffClick) {
+                /**
+                 * Need to add listener to end of Call Stack.
+                 * this.$nextTick can't be used because it's still in component.
+                 */
+                setTimeout(() => {
+                    document.addEventListener('click', this.offClick);
+                });
+            }
+
+            if (!this.disableEsc) {
+                window.addEventListener('keydown', this.escClose);
+            }
 
             this.$emit('show', this.name);
         },
@@ -131,8 +144,13 @@ export default {
                 this.removeBodyStyles();
             }
 
-            document.removeEventListener('click', this.offClick);
-            window.removeEventListener('keydown', this.escClose);
+            if (!this.disableOffClick) {
+                document.removeEventListener('click', this.offClick);
+            }
+
+            if (!this.disableEsc) {
+                window.removeEventListener('keydown', this.escClose);
+            }
         },
         removePopupFromDOM() {
             if (document.body.contains(this.$el)) {
@@ -154,6 +172,13 @@ export default {
             if (!this.$el.contains(ev.target)) {
                 this.close();
             }
+        },
+        onPopupClick() {
+            if (this.disableOffClick) {
+                return;
+            }
+
+            this.close();
         },
     },
 };

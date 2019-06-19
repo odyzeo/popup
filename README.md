@@ -47,10 +47,12 @@ Anywhere else in your project:
 ```
 
 ### Props
-| Property name | Type   | Default value | Description                                                                                                                   |
-| ------------- | ------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `name`        | string |               | Set global selector for your popup                                                                                            |
-| `type`        | string | `fixed`       | Change behaviour inside document: <br><br> `fixed` - prevents document scrolling, <br> `absolute` - enable document scrolling |
+| Property name       | Type    | Default value | Description                                                                                                                   |
+| ------------------- | ------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `name`              | string  |               | Set global selector for your popup                                                                                            |
+| `type`              | string  | `fixed`       | Change behaviour inside document: <br><br> `fixed` - prevents document scrolling, <br> `absolute` - enable document scrolling |
+| `disable-esc`       | boolean | `false`       | Disable closing popup on 'Esc' key                                                                                            |
+| `disable-off-click` | boolean | `false`       | Disable closing popup on click outside the popup                                                                              | 
 
 ### Scope props
 | Event name | Description                                 |

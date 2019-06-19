@@ -54,6 +54,8 @@
 
             <popup
                 name="Popup2"
+                disable-esc
+                disable-off-click
                 @close="onClose"
                 @show="onShow"
             >
