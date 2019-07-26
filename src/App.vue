@@ -3,9 +3,7 @@
         id="app"
         class="app"
     >
-        <div
-            class="container"
-        >
+        <div class="container">
             <h1>Popup</h1>
 
             <div>
@@ -34,9 +32,12 @@
                         <option
                             value="fixed"
                             selected
-                        >Fixed
+                        >
+                            Fixed
                         </option>
-                        <option value="absolute">Absolute</option>
+                        <option value="absolute">
+                            Absolute
+                        </option>
                     </select>
                 </label>
 
@@ -81,7 +82,7 @@
             <button
                 type="button"
                 class="placeholder__button"
-                @click.prevent="$popup.show('Popup1')"
+                @click.prevent="$popup.show('adjustable')"
             >
                 Popup with adjustable controls
             </button>
@@ -91,9 +92,9 @@
             <button
                 type="button"
                 class="placeholder__button"
-                @click.prevent="$popup.show('Popup2')"
+                @click.prevent="$popup.show('basic')"
             >
-                Popup 2
+                Basic
             </button>
 
             <popup
@@ -102,7 +103,7 @@
                 :type="type"
                 :transition="transition"
                 :menu="menu"
-                name="Popup1"
+                name="adjustable"
                 @close="onClose"
                 @show="onShow"
             >
@@ -129,13 +130,7 @@
                 </template>
             </popup>
 
-            <popup
-                name="Popup2"
-                disable-esc
-                disable-off-click
-                @close="onClose"
-                @show="onShow"
-            >
+            <popup name="basic">
                 <template #default="{ close }">
                     <div class="placeholder">
                         I am the second popup on this instance,
@@ -159,7 +154,6 @@
 
 export default {
     name: 'App',
-
     data() {
         return {
             menu: null,
@@ -168,10 +162,8 @@ export default {
             disableEsc: false,
             disableOffClick: false,
             dynamic: false,
-
         };
     },
-
     methods: {
         closeSpecificPopup(name = null) {
             if (name) {
