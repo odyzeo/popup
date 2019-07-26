@@ -1,6 +1,11 @@
 <template>
     <div
-        :class="[classType, `popup--${type}`]"
+        :class="[
+            classType,
+            `popup--${type}`,
+            transition && `popup-transition-${transition}`,
+            menu && `popup-menu popup-menu--${menu}`,
+        ]"
         class="popup"
         @click.prevent="onPopupClick"
     >
@@ -47,6 +52,14 @@ export default {
         disableEsc: {
             type: Boolean,
             default: false,
+        },
+        menu: {
+            type: String,
+            default: null,
+        },
+        transition: {
+            type: String,
+            default: 'fade',
         },
     },
 
@@ -185,5 +198,5 @@ export default {
 </script>
 
 <style lang="less">
-@import '../less/popup.less';
+    @import '../less/popup.less';
 </style>
