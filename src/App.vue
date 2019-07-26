@@ -6,14 +6,87 @@
         <div
             class="container"
         >
-            <h1>Popups</h1>
+            <h1>Popup</h1>
+
+            <div>
+
+                <label>
+                    <input
+                        v-model="disableEsc"
+                        type="checkbox"
+                    > disable-esc
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input
+                        v-model="disableOffClick"
+                        type="checkbox"
+                    > disable-off-click
+                </label>
+
+                <br><br>
+
+                <label>
+                    Popup type: <br>
+                    <select v-model="type">
+                        <option
+                            value="fixed"
+                            selected
+                        >Fixed
+                        </option>
+                        <option value="absolute">Absolute</option>
+                    </select>
+                </label>
+
+                <br><br>
+
+                <label>
+                    Menu options: <br>
+                    <select v-model="menu">
+                        <option
+                            value="null"
+                            selected
+                        >No menu
+                        </option>
+                        <option value="top">Top</option>
+                        <option value="left">Left</option>
+                        <option value="right">Right</option>
+                        <option value="bottom">bottom</option>
+                    </select>
+                </label>
+
+                <br><br>
+
+                <label>
+                    Transitions: <br>
+                    <select v-model="transition">
+                        <option
+                            value="null"
+                            selected
+                        >No transition
+                        </option>
+                        <option value="slide-top">Slide top</option>
+                        <option value="slide-left">Slide left</option>
+                        <option value="slide-right">Slide right</option>
+                        <option value="slide-bottom">Slide bottom</option>
+                        <option value="fade">Fade</option>
+                    </select>
+                </label>
+
+                <br><br>
+            </div>
+
             <button
                 type="button"
                 class="placeholder__button"
                 @click.prevent="$popup.show('Popup1')"
             >
-                Popup 1
+                Popup with adjustable controls
             </button>
+
+            <hr>
 
             <button
                 type="button"
@@ -24,8 +97,12 @@
             </button>
 
             <popup
+                :disable-off-click="disableOffClick"
+                :disable-esc="disableEsc"
+                :type="type"
+                :transition="transition"
+                :menu="menu"
                 name="Popup1"
-                type="absolute"
                 @close="onClose"
                 @show="onShow"
             >
@@ -82,6 +159,19 @@
 
 export default {
     name: 'App',
+
+    data() {
+        return {
+            menu: null,
+            transition: null,
+            type: 'fixed',
+            disableEsc: false,
+            disableOffClick: false,
+            dynamic: false,
+
+        };
+    },
+
     methods: {
         closeSpecificPopup(name = null) {
             if (name) {
@@ -101,5 +191,5 @@ export default {
 </script>
 
 <style lang="less">
-@import '../src/less/app.less';
+    @import '../src/less/app.less';
 </style>
