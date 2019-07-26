@@ -53,7 +53,7 @@ Anywhere else in your project:
 | `type`              | string  | `fixed`       | Change behaviour inside document: <br><br> `fixed` - prevents document scrolling, <br> `absolute` - enable document scrolling |
 | `disable-esc`       | boolean | `false`       | Disable closing popup on 'Esc' key                                                                                            |
 | `disable-off-click` | boolean | `false`       | Disable closing popup on click outside the popup                                                                              |
-| `transition`        | string  | `fade`        | Change or remove opening and closing transitions. <br> Available transitions: <br><br> `slide-left` <br> `slide-right` <br> `slide-bottom` <br> `slide-top` <br> `slide-top` <br><br> You can even use your own transition name with styles. It will be transpiled to `popup-transition--*prop*` |
+| `transition`        | string  | `fade`        | Change or remove opening and closing transitions. <br> Available transitions: <br><br> `slide-left` <br> `slide-right` <br> `slide-bottom` <br> `slide-top` <br> `fade` <br> `null` - for no transition <br><br> You can even use your own transition name with styles. It will be transpiled to `popup-transition--*prop*` |
 | `menu`              | string  | `null`        | Will adjust popup inner container to behave as menu wrapper based on direction. <br> Directions: <br><br> `top` <br> `bottom` <br> `left` <br> `right`|
 
 ### Scope props
