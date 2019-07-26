@@ -3,7 +3,7 @@
 Simple popup component plugin with global triggers
 and renderless logic.
 
-[Demo](https://popup-fk59o41yw.now.sh/)
+<a href="https://popup-fk59o41yw.now.sh" target="_blank">Demo</a>
 
 ## Installation
 
@@ -20,7 +20,7 @@ In your template:
     type="button"
     @click.prevent="$popup.show('example')"
 >
-    Popup 1
+    Example
 </button>
 ```
 
@@ -70,7 +70,7 @@ Anywhere else in your project:
 | `close` | `popupName` - Name of closed popup | Event emitted when popup is closed |
 | `show`  | `popupName` - Name of opened popup | Event emitted when popup is opened |
 
-### Globally declared close method
+### Import styles
 ```
 <script>
 import '@odyzeo/popup/dist/popup.css';
@@ -105,20 +105,11 @@ this.$popup.currentPopup
 npm run serve
 ```
 
-## Deploy demo with [now](https://zeit.co/)
+## Deploy demo with <a href="https://zeit.co" target="_blank">now</a>
 ```bash
-npm run build
 now
 ```
-or
 
-```bash
-yarn serve
-```
-
-# TODO
-- drag
-- dynamic creation of modal
-- customizable options
-- prop-like trigger
-- add tests
+## TODO
+- drag and drop
+- tests
