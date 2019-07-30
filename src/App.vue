@@ -77,6 +77,10 @@
                 </label>
 
                 <br><br>
+
+                Current popup: {{ $popup.currentPopup }}
+
+                <br><br>
             </div>
 
             <button

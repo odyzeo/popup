@@ -12,9 +12,17 @@ const Plugin = {
 
         const defaultComponentName = 'Popup';
 
-        this.currentPopup = null;
         this.installed = true;
         this.componentName = options.componentName || defaultComponentName;
+
+        /**
+         * Set global reactive property
+         */
+        this.currentPopup = new Vue({
+            data: {
+                getCurrentPopup: null,
+            },
+        });
 
         /**
          * Plugin API
@@ -33,6 +41,22 @@ const Plugin = {
                 this.currentPopup = null;
             },
         };
+
+        /**
+         * Create getters/setters for reactive properties
+         */
+        Object.defineProperties(Vue.prototype.$popup, {
+            currentPopup: {
+                get: () => this.currentPopup.getCurrentPopup,
+
+                set: (value) => {
+                    this.currentPopup.getCurrentPopup = value;
+
+                    return this.currentPopup.getCurrentPopup;
+                },
+            },
+        });
+
         /**
          * Sets custom component name (if provided)
          */
