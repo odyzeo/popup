@@ -37,6 +37,10 @@ export default {
     name: 'OdyzeoPopup',
 
     props: {
+        value: {
+            type: Boolean,
+            default: false,
+        },
         name: {
             required: true,
             type: String,
@@ -76,6 +80,11 @@ export default {
         },
     },
 
+    watch: {
+        value(n) {
+            this.toggle(n);
+        },
+    },
     /**
      * Sets global listeners
      */
@@ -140,6 +149,8 @@ export default {
                 window.addEventListener('keydown', this.escClose);
             }
 
+            this.$popup.currentPopup = this.name;
+
             this.$emit('show', this.name);
         },
         ok() {
@@ -148,6 +159,7 @@ export default {
         close() {
             this.closePopup();
             this.$emit('close', this.name);
+            this.$emit('input', false);
         },
         closePopup() {
             this.isOpen = false;

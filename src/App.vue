@@ -78,6 +78,10 @@
 
                 <br><br>
 
+                <button @click.prevent="toggle = !toggle">Toggle popup with v-model</button>
+
+                <br><br>
+
                 Current popup: {{ $popup.currentPopup }}
 
                 <br><br>
@@ -134,7 +138,10 @@
                 </template>
             </popup>
 
-            <popup name="basic">
+            <popup
+                v-model="toggle"
+                name="basic"
+            >
                 <template #default="{ close }">
                     <div class="placeholder">
                         I am the second popup on this instance,
@@ -160,6 +167,7 @@ export default {
     name: 'App',
     data() {
         return {
+            toggle: false,
             menu: null,
             transition: null,
             type: 'fixed',
