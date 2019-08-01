@@ -3,7 +3,7 @@
 Simple popup component plugin with global triggers
 and renderless logic.
 
-<a href="https://popup-fk59o41yw.now.sh" target="_blank">Demo</a>
+<a href="https://popup-afk4koh96.now.sh" target="_blank">Demo</a>
 
 ## Installation
 
