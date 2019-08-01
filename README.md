@@ -57,6 +57,7 @@ Anywhere else in your project:
 | `disable-off-click` | boolean | `false`       | Disable closing popup on click outside the popup                                                                              |
 | `transition`        | string  | `fade`        | Change or remove opening and closing transitions. <br> Available transitions: <br><br> `fade` <br> `slide-top` <br> `slide-right` <br> `slide-bottom` <br> `slide-left` <br> `null` - no transition <br><br> You can even use your own transition name with styles. It will be transpiled to `popup-transition--${transition}` |
 | `menu`              | string  | `null`        | Will adjust popup inner container to behave as menu wrapper based on direction. <br> Directions: <br><br> `top` <br> `right` <br> `bottom` <br> `left`|
+| `v-model`           | boolean | `false`       | `v-model` property is always automatically synced with <popup> visible state and you can show/hide using v-model |
 
 ### Scope props
 | Event name | Description                                 |

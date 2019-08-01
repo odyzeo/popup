@@ -78,7 +78,12 @@
 
                 <br><br>
 
-                <button @click.prevent="toggle = !toggle">Toggle popup with v-model</button>
+                <button
+                    class="placeholder__button"
+                    @click.prevent="toggle = !toggle"
+                >
+                    Toggle basic popup with v-model: {{ toggle ? 'open' : 'closed' }}
+                </button>
 
                 <br><br>
 

@@ -94,6 +94,9 @@ export default {
 
     mounted() {
         document.body.appendChild(this.$el);
+        if (this.value) {
+            this.toggle(true);
+        }
     },
 
     beforeDestroy() {
@@ -152,6 +155,7 @@ export default {
             this.$popup.currentPopup = this.name;
 
             this.$emit('show', this.name);
+            this.$emit('input', true);
         },
         ok() {
             this.closePopup();
@@ -159,7 +163,6 @@ export default {
         close() {
             this.closePopup();
             this.$emit('close', this.name);
-            this.$emit('input', false);
         },
         closePopup() {
             this.isOpen = false;
@@ -176,6 +179,8 @@ export default {
             if (!this.disableEsc) {
                 window.removeEventListener('keydown', this.escClose);
             }
+
+            this.$emit('input', false);
         },
         removePopupFromDOM() {
             if (document.body.contains(this.$el)) {
@@ -210,5 +215,5 @@ export default {
 </script>
 
 <style lang="less">
-    @import '../less/popup.less';
+@import '../less/popup.less';
 </style>
