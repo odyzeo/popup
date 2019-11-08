@@ -87,7 +87,7 @@
 
                 <br><br>
 
-                Current popup: {{ $popup.currentPopup }}
+                Current popup: {{ Array.from($popup.currentPopups) }}
 
                 <br><br>
             </div>
@@ -127,6 +127,14 @@
                         <button
                             class="placeholder__button placeholder__button--primary"
                             type="button"
+                            @click.prevent="$popup.show('basic')"
+                        >
+                            one more basic popup please
+                        </button>
+                        <br><br>
+                        <button
+                            class="placeholder__button placeholder__button--primary"
+                            type="button"
                             @click.prevent="ok"
                         >
                             Accept
@@ -135,7 +143,7 @@
                         <button
                             type="button"
                             class="placeholder__button"
-                            @click.prevent="closeSpecificPopup($popup.currentPopup)"
+                            @click.prevent="$popup.hide('adjustable')"
                         >
                             Close
                         </button>
@@ -157,7 +165,21 @@
                             class="placeholder__button"
                             @click.prevent="close"
                         >
-                            Close
+                            Close this
+                        </button>
+                        <button
+                            type="button"
+                            class="placeholder__button"
+                            @click.prevent="$popup.hide('adjustable')"
+                        >
+                            Close adjustable
+                        </button>
+                        <button
+                            type="button"
+                            class="placeholder__button"
+                            @click.prevent="$popup.hideAll"
+                        >
+                            Hide all
                         </button>
                     </div>
                 </template>
@@ -200,5 +222,5 @@ export default {
 </script>
 
 <style lang="less">
-    @import '../src/less/app.less';
+@import '../src/less/app.less';
 </style>

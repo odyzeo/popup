@@ -18,9 +18,9 @@ const Plugin = {
         /**
          * Set global reactive property
          */
-        this.currentPopup = new Vue({
+        this.currentPopups = new Vue({
             data: {
-                getCurrentPopup: null,
+                getCurrentPopups: new Set(),
             },
         });
 
@@ -30,15 +30,29 @@ const Plugin = {
         // eslint-disable-next-line
         Vue.prototype.$popup = {
             show(name) {
-                if (typeof name === 'string' && !this.currentPopup) {
-                    this.currentPopup = name;
+                if (typeof name === 'string') {
+                    this.currentPopups.add(name);
                     EventBus.$emit('toggle', name, true);
                 }
             },
 
-            hide(name) {
-                EventBus.$emit('toggle', name, false);
-                this.currentPopup = null;
+            /**
+             * Close all popups when no params
+             * else just requested.
+             */
+            hide(name = null) {
+                if (name == null) {
+                    this.currentPopups.forEach((current) => {
+                        EventBus.$emit('toggle', current, false);
+                    });
+                    this.currentPopups = new Set();
+                } else {
+                    EventBus.$emit('toggle', name, false);
+                    this.currentPopups = new Set(
+                        [...this.currentPopups]
+                            .filter(current => current !== name),
+                    );
+                }
             },
         };
 
@@ -46,13 +60,13 @@ const Plugin = {
          * Create getters/setters for reactive properties
          */
         Object.defineProperties(Vue.prototype.$popup, {
-            currentPopup: {
-                get: () => this.currentPopup.getCurrentPopup,
+            currentPopups: {
+                get: () => this.currentPopups.getCurrentPopups,
 
-                set: (value) => {
-                    this.currentPopup.getCurrentPopup = value;
+                set: (popups) => {
+                    this.currentPopups.getCurrentPopups = popups;
 
-                    return this.currentPopup.getCurrentPopup;
+                    return this.currentPopups.getCurrentPopups;
                 },
             },
         });

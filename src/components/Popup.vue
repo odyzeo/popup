@@ -152,7 +152,9 @@ export default {
                 window.addEventListener('keydown', this.escClose);
             }
 
-            this.$popup.currentPopup = this.name;
+            this.$popup.currentPopups = new Set(
+                [...this.$popup.currentPopups, this.name],
+            );
 
             this.$emit('show', this.name);
             this.$emit('input', true);
@@ -166,7 +168,10 @@ export default {
         },
         closePopup() {
             this.isOpen = false;
-            this.$popup.currentPopup = null;
+            this.$popup.currentPopups = new Set(
+                [...this.$popup.currentPopups]
+                    .filter(name => name !== this.name),
+            );
 
             if (this.type === 'fixed') {
                 this.removeBodyStyles();

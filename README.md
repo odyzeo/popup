@@ -90,14 +90,14 @@ Methods can be invoked globally via plugin command:
 this.$popup.show('name');
 ```
 
-#### Hide specific popup
+#### Hide specific popup - when no param provided hide all current popups
 ```
 this.$popup.hide('name');
 ```
 
-#### Get currently opened popup name
+#### Get currently opened popups names - returns Set
 ```
-this.$popup.currentPopup
+this.$popup.currentPopups
 ```
 
 ## Development
