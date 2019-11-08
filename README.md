@@ -100,6 +100,11 @@ this.$popup.hide('name');
 this.$popup.currentPopups
 ```
 
+#### Check if popup is open
+```
+this.$popup.currentPopups.has('name')
+```
+
 ## Development
 
 ```bash
