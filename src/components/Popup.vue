@@ -102,7 +102,9 @@ export default {
     beforeDestroy() {
         EventBus.$off('toggle', this.handleToggleEvent);
 
-        this.close();
+        if (this.isOpen) {
+            this.close();
+        }
         this.removePopupFromDOM();
     },
 
