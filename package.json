@@ -3,6 +3,7 @@
     "version": "3.0.2",
     "description": "Odyzeo popup component with Vue",
     "main": "dist/popup.umd.js",
+    "style": "dist/popup.css",
     "keywords": [
         "odyzeo",
         "popup",
