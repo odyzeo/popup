@@ -111,6 +111,16 @@ this.$popup.currentPopups.has('name')
 npm run serve
 ```
 
+## Publishing
+```bash
+# Assuming all tested, committed and works like a charm!
+npm version {patch|minor|major} # See semantic version
+npm run build-lib
+npm run publish
+git push
+git push --tags # Add release on GitHub
+```
+
 ## Deploy demo with <a href="https://zeit.co" target="_blank">now</a>
 ```bash
 now
