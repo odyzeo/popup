@@ -7,11 +7,10 @@
             menu && `popup-menu popup-menu--${menu}`,
         ]"
         class="popup"
-        @click.prevent="onPopupClick"
     >
         <div
+            ref="inner"
             class="popup__inner"
-            @click.stop
         >
             <div
                 class="popup__close"
@@ -206,16 +205,9 @@ export default {
             window.scrollTo(0, this.scrollTop);
         },
         offClick(ev) {
-            if (!this.$el.contains(ev.target)) {
+            if (!this.$refs.inner.contains(ev.target)) {
                 this.close();
             }
-        },
-        onPopupClick() {
-            if (this.disableOffClick) {
-                return;
-            }
-
-            this.close();
         },
     },
 };
