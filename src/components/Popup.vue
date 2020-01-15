@@ -213,7 +213,11 @@ export default {
         },
         removePopupFromDOM() {
             if (document.body.contains(this.$el)) {
-                document.body.removeChild(this.$el);
+                if (this.inline) {
+                    this.originalParent.removeChild(this.$el);
+                } else {
+                    document.body.removeChild(this.$el);
+                }
             }
         },
         addBodyStyles() {
