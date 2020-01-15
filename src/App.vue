@@ -27,6 +27,15 @@
                 <br><br>
 
                 <label>
+                    <input
+                        v-model="inline"
+                        type="checkbox"
+                    > inline
+                </label>
+
+                <br><br>
+
+                <label>
                     Popup type: <br>
                     <select v-model="type">
                         <option
@@ -116,6 +125,7 @@
                 :type="type"
                 :transition="transition"
                 :menu="menu"
+                :inline="inline"
                 name="adjustable"
                 @close="onClose"
                 @show="onShow"
@@ -201,6 +211,7 @@ export default {
             disableEsc: false,
             disableOffClick: false,
             dynamic: false,
+            inline: false,
         };
     },
     methods: {
