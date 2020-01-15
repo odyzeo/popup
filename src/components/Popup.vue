@@ -64,12 +64,17 @@ export default {
             type: String,
             default: 'fade',
         },
+        inline: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
         return {
             isOpen: false,
             scrollTop: null,
+            originalParent: null,
         };
     },
 
@@ -83,6 +88,13 @@ export default {
         value(n) {
             this.toggle(n);
         },
+        inline(n) {
+            if (n) {
+                this.appendToParent();
+            } else {
+                this.appendToBody();
+            }
+        },
     },
     /**
      * Sets global listeners
@@ -92,7 +104,12 @@ export default {
     },
 
     mounted() {
-        document.body.appendChild(this.$el);
+        this.originalParent = this.$el.parentNode;
+
+        if (!this.inline) {
+            this.appendToBody();
+        }
+
         if (this.value) {
             this.toggle(true);
         }
@@ -108,6 +125,12 @@ export default {
     },
 
     methods: {
+        appendToParent() {
+            this.originalParent.appendChild(this.$el);
+        },
+        appendToBody() {
+            document.body.appendChild(this.$el);
+        },
         handleToggleEvent(name, state) {
             if (this.name === name) {
                 const nextState = typeof state === 'undefined'
@@ -190,7 +213,11 @@ export default {
         },
         removePopupFromDOM() {
             if (document.body.contains(this.$el)) {
-                document.body.removeChild(this.$el);
+                if (this.inline) {
+                    this.originalParent.removeChild(this.$el);
+                } else {
+                    document.body.removeChild(this.$el);
+                }
             }
         },
         addBodyStyles() {
