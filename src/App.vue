@@ -127,8 +127,6 @@
                 :menu="menu"
                 :inline="inline"
                 name="adjustable"
-                @close="onClose"
-                @show="onShow"
             >
                 <template #default="{ ok }">
                     <div class="placeholder">
@@ -187,7 +185,7 @@
                         <button
                             type="button"
                             class="placeholder__button"
-                            @click.prevent="$popup.hideAll"
+                            @click.prevent="$popup.hide(null)"
                         >
                             Hide all
                         </button>
@@ -217,21 +215,6 @@ export default {
     computed: {
         currentPopups() {
             return [...this.$popup.currentPopups];
-        },
-    },
-    methods: {
-        closeSpecificPopup(name = null) {
-            if (name) {
-                this.$popup.hide(name);
-            }
-        },
-        onClose(popup) {
-            // eslint-disable-next-line no-console
-            console.log(`Closed popup ${popup}`);
-        },
-        onShow(popup) {
-            // eslint-disable-next-line no-console
-            console.log(`Opened popup ${popup}`);
         },
     },
 };
