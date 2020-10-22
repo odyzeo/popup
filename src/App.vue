@@ -7,7 +7,6 @@
             <h1>Popup</h1>
 
             <div>
-
                 <label>
                     <input
                         v-model="disableEsc"
@@ -221,5 +220,5 @@ export default {
 </script>
 
 <style lang="less">
-    @import '../src/less/app.less';
+@import '../src/less/app.less';
 </style>

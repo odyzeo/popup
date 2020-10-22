@@ -2,7 +2,9 @@
     "name": "@odyzeo/popup",
     "version": "3.1.0",
     "description": "Odyzeo popup component with Vue",
-    "main": "dist/popup.umd.js",
+    "main": "dist/popup.common.js",
+    "less": "src/less/popup.less",
+    "style": "dist/popup.css",
     "keywords": [
         "odyzeo",
         "popup",
@@ -33,17 +35,20 @@
         ".js"
     ],
     "dependencies": {
-        "normalize.css": "^8.0.0",
-        "vue": "^2.6.10"
+        "eslint-plugin-vue": "^7.1.0",
+        "vue": "^2.6.12"
     },
     "devDependencies": {
-        "@vue/cli-plugin-babel": "^3.9.2",
-        "@vue/cli-plugin-eslint": "^3.9.2",
-        "@vue/cli-service": "^3.9.3",
-        "@vue/eslint-config-airbnb": "^4.0.1",
-        "less": "^3.0.4",
-        "less-loader": "^5.0.0",
-        "vue-template-compiler": "^2.6.10"
+        "@vue/cli-plugin-babel": "^4.5.8",
+        "@vue/cli-plugin-eslint": "^4.5.8",
+        "@vue/cli-service": "^4.5.8",
+        "@vue/eslint-config-airbnb": "^5.1.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.11.0",
+        "less": "^3.12.2",
+        "less-loader": "^7.0.2",
+        "normalize.css": "^8.0.1",
+        "vue-template-compiler": "^2.6.12"
     },
     "eslintConfig": {
         "root": true,
@@ -90,7 +95,16 @@
                 {
                     "props": false
                 }
-            ]
+            ],
+            "no-lonely-if": 0,
+            "arrow-parens": [
+                2,
+                "as-needed",
+                {
+                    "requireForBlockBody": true
+                }
+            ],
+            "class-methods-use-this": 0
         },
         "parserOptions": {
             "parser": "babel-eslint"
@@ -102,8 +116,6 @@
         }
     },
     "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
+        "defaults"
     ]
 }
