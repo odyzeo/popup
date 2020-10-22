@@ -96,7 +96,7 @@
 
                 <br><br>
 
-                Current popup: {{ Array.from($popup.currentPopups) }}
+                Current popup: {{ currentPopups }}
 
                 <br><br>
             </div>
@@ -212,9 +212,14 @@ export default {
             inline: false,
         };
     },
+    computed: {
+        currentPopups() {
+            return [...this.$popup.currentPopups];
+        },
+    },
 };
 </script>
 
 <style lang="less">
-@import '../src/less/app.less';
+    @import '../src/less/app.less';
 </style>
