@@ -14,7 +14,7 @@
         >
             <div
                 class="popup__close"
-                @click.prevent="close"
+                @click.prevent="onClose"
             >
                 <slot name="close">
                     <span class="icon-cancel"></span>
@@ -22,7 +22,7 @@
             </div>
 
             <slot
-                :close="close"
+                :close="onClose"
                 :ok="ok"
             ></slot>
         </div>
@@ -182,6 +182,9 @@ export default {
         ok() {
             this.closePopup();
         },
+        onClose() {
+            this.$popup.hide(this.name);
+        },
         close() {
             this.closePopup();
             this.$emit('close', this.name);
@@ -225,7 +228,7 @@ export default {
         },
         offClick(ev) {
             if (!this.$refs.inner.contains(ev.target)) {
-                this.close();
+                this.onClose();
             }
         },
     },
