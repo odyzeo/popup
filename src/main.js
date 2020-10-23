@@ -4,7 +4,6 @@ import popup from './plugin/popup';
 import App from './App';
 
 Vue.config.productionTip = false;
-
 Vue.use(popup);
 
 new Vue({

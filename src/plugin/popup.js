@@ -6,67 +6,46 @@ const Plugin = {
         /**
          * Makes sure that plugin can be installed only once
          */
-        if (this.installed) {
+        if (Vue.prototype.$popup) {
             return;
         }
 
         const defaultComponentName = 'Popup';
-
-        this.installed = true;
         this.componentName = options.componentName || defaultComponentName;
 
         /**
          * Set global reactive property
          */
-        this.currentPopups = new Vue({
-            data: {
-                getCurrentPopups: new Set(),
-            },
-        });
+        let currentPopups = new Set();
+        Vue.prototype.$popup = Vue.observable({ currentPopups: [] });
 
         /**
          * Plugin API
          */
-        // eslint-disable-next-line
-        Vue.prototype.$popup = {
-            show(name) {
-                if (typeof name === 'string') {
-                    this.currentPopups.add(name);
-                    EventBus.$emit('toggle', name, true);
-                }
-            },
-
-            /**
-             * Close all popups when no params
-             * else just requested.
-             */
-            hide(name = null) {
-                if (name == null) {
-                    this.currentPopups.forEach((current) => {
-                        EventBus.$emit('toggle', current, false);
-                    });
-                    this.currentPopups = new Set();
-                } else {
-                    EventBus.$emit('toggle', name, false);
-                    this.currentPopups = new Set(
-                        [...this.currentPopups]
-                            .filter(current => current !== name),
-                    );
-                }
-            },
-        };
-
-        /**
-         * Create getters/setters for reactive properties
-         */
         Object.defineProperties(Vue.prototype.$popup, {
-            currentPopups: {
-                get: () => this.currentPopups.getCurrentPopups,
+            show: {
+                value: (name) => {
+                    if (typeof name === 'string') {
+                        Vue.prototype.$popup.currentPopups = [...currentPopups.add(name)];
 
-                set: (popups) => {
-                    this.currentPopups.getCurrentPopups = popups;
+                        EventBus.$emit('toggle', name, true);
+                    }
+                },
+            },
+            hide: {
+                value: (name = null) => {
+                    if (name == null) {
+                        Vue.prototype.$popup.currentPopups.forEach((current) => {
+                            EventBus.$emit('toggle', current, false);
+                        });
+                        currentPopups = new Set();
 
-                    return this.currentPopups.getCurrentPopups;
+                        Vue.prototype.$popup.currentPopups = [...currentPopups];
+                    } else {
+                        currentPopups.delete(name);
+                        EventBus.$emit('toggle', name, false);
+                        Vue.prototype.$popup.currentPopups = [...currentPopups];
+                    }
                 },
             },
         });
