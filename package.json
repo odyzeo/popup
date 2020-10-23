@@ -2,7 +2,8 @@
     "name": "@odyzeo/popup",
     "version": "3.1.0",
     "description": "Odyzeo popup component with Vue",
-    "main": "dist/popup.umd.js",
+    "main": "dist/popup.umd.min.js",
+    "unpkg": "dist/popup.umd.min.js",
     "keywords": [
         "odyzeo",
         "popup",
