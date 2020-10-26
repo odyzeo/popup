@@ -86,7 +86,11 @@ export default {
 
     watch: {
         value(n) {
-            this.toggle(n);
+            if (n) {
+                this.$popup.show(this.name);
+            } else {
+                this.$popup.hide(this.name);
+            }
         },
         inline(n) {
             if (n) {
@@ -236,5 +240,5 @@ export default {
 </script>
 
 <style lang="less">
-    @import '../less/popup.less';
+@import '../less/popup.less';
 </style>
