@@ -2,11 +2,11 @@
     "name": "@odyzeo/popup",
     "version": "3.1.0",
     "description": "Odyzeo popup component with Vue",
-    "main": "dist/popup.umd.js",
+    "main": "dist/popup.common.js",
     "keywords": [
         "odyzeo",
         "popup",
-        "renderles",
+        "renderless",
         "plugin",
         "vue"
     ],
@@ -32,10 +32,6 @@
         "*.json",
         ".js"
     ],
-    "dependencies": {
-        "normalize.css": "^8.0.0",
-        "vue": "^2.6.10"
-    },
     "devDependencies": {
         "@vue/cli-plugin-babel": "^3.9.2",
         "@vue/cli-plugin-eslint": "^3.9.2",
@@ -43,7 +39,11 @@
         "@vue/eslint-config-airbnb": "^4.0.1",
         "less": "^3.0.4",
         "less-loader": "^5.0.0",
+        "normalize.css": "^8.0.1",
         "vue-template-compiler": "^2.6.10"
+    },
+    "peerDependencies": {
+        "vue": ">= 2.6.10 < 3"
     },
     "eslintConfig": {
         "root": true,
@@ -102,8 +102,7 @@
         }
     },
     "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
+        "defaults",
+        "> 0.5% in SK"
     ]
 }
