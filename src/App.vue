@@ -96,7 +96,7 @@
 
                 <br><br>
 
-                Current popup: {{ currentPopups }}
+                Current popup: {{ $popup.currentPopups }}
 
                 <br><br>
             </div>
@@ -127,6 +127,8 @@
                 :menu="menu"
                 :inline="inline"
                 name="adjustable"
+                @close="onClose"
+                @show="onShow"
             >
                 <template #default="{ ok }">
                     <div class="placeholder">
@@ -212,14 +214,19 @@ export default {
             inline: false,
         };
     },
-    computed: {
-        currentPopups() {
-            return [...this.$popup.currentPopups];
+    methods: {
+        onClose() {
+            // eslint-disable-next-line no-console
+            console.log('onClose');
+        },
+        onShow() {
+            // eslint-disable-next-line no-console
+            console.log('onShow');
         },
     },
 };
 </script>
 
 <style lang="less">
-    @import '../src/less/app.less';
+@import '../src/less/app.less';
 </style>
