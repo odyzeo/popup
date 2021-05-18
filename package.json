@@ -21,6 +21,7 @@
         "build-lib": "vue-cli-service build --target lib --name popup ./src/plugin/popup.js",
         "lint": "vue-cli-service lint"
     },
+    "style": "dist/popup.css",
     "repository": {
         "type": "git",
         "url": "https://github.com/odyzeo/popup.git"
@@ -40,7 +41,7 @@
         "less": "^3.0.4",
         "less-loader": "^5.0.0",
         "normalize.css": "^8.0.1",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.12"
     },
     "peerDependencies": {
         "vue": ">= 2.6.10 < 3"

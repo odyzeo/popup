@@ -17,9 +17,10 @@
                 @click.prevent="close"
             >
                 <slot name="close">
-                    <div class="popup__close-default-icon">
-                        <img src="../assets/icons/close.svg">
-                    </div>
+                    <img
+                        class="popup__icon-close"
+                        src="../assets/icons/close.svg"
+                    >
                 </slot>
             </div>
 
