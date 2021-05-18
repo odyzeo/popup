@@ -19,7 +19,7 @@
                 <slot name="close">
                     <img
                         class="popup__icon-close"
-                        src="../assets/icons/close.svg"
+                        src="@/assets/icons/close.svg"
                     >
                 </slot>
             </div>
