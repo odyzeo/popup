@@ -3,7 +3,7 @@
 Simple popup component plugin with global triggers
 and renderless logic.
 
-<a href="https://popup-afk4koh96.now.sh" target="_blank">Demo</a>
+<a href="https://popup-one.vercel.app/" target="_blank">Demo</a>
 
 ## Installation
 
@@ -120,11 +120,6 @@ npm run build-lib
 npm run publish
 git push
 git push --tags # Add release on GitHub
-```
-
-## Deploy demo with <a href="https://zeit.co" target="_blank">now</a>
-```bash
-now
 ```
 
 ## TODO
