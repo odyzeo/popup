@@ -50,7 +50,7 @@ const Plugin = {
                     EventBus.$emit('toggle', name, false);
                     this.currentPopups = new Set(
                         [...this.currentPopups]
-                            .filter(current => current !== name),
+                            .filter((current) => current !== name),
                     );
                 }
             },

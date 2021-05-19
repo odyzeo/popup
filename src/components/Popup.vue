@@ -199,7 +199,7 @@ export default {
             this.isOpen = false;
             this.$popup.currentPopups = new Set(
                 [...this.$popup.currentPopups]
-                    .filter(name => name !== this.name),
+                    .filter((name) => name !== this.name),
             );
 
             if (this.type === 'fixed') {

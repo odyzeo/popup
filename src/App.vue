@@ -7,7 +7,6 @@
             <h1>Popup</h1>
 
             <div>
-
                 <label>
                     <input
                         v-model="disableEsc"
