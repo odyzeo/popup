@@ -95,9 +95,9 @@
 
                 <br><br>
 
-                Current popup: {{ $popup.currentPopups }}
+                Current popups: {{ popupNames }}
 
-                <br><br>
+                <br>
             </div>
 
             <button
@@ -212,6 +212,11 @@ export default {
             dynamic: false,
             inline: false,
         };
+    },
+    computed: {
+        popupNames() {
+            return [...this.$popup.currentPopups].join(',');
+        },
     },
     methods: {
         onClose() {
