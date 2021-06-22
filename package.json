@@ -1,6 +1,6 @@
 {
     "name": "@odyzeo/popup",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "description": "Odyzeo popup component with Vue",
     "main": "dist/popup.common.js",
     "keywords": [
