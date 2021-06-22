@@ -192,6 +192,9 @@
                         </button>
                     </div>
                 </template>
+                <template #close>
+                    CLOSE
+                </template>
             </popup>
         </div>
     </div>
