@@ -3,6 +3,16 @@
     "version": "4.0.1",
     "description": "Odyzeo popup component with Vue",
     "main": "dist/popup.common.js",
+    "module": "src/index.js",
+    "source": "src/plugin/popup.js",
+    "browser": "dist/popup.umd.min.js",
+    "style": "dist/popup.css",
+    "less": "src/less/popup.less",
+    "files": [
+        "dist/*",
+        "src/*",
+        "package.json"
+    ],
     "keywords": [
         "odyzeo",
         "popup",
@@ -14,7 +24,6 @@
     "publishConfig": {
         "access": "public"
     },
-    "license": "ISC",
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
@@ -22,18 +31,10 @@
         "vercel-build": "npm i vue --save-dev && vue-cli-service build",
         "lint": "eslint --ext=.js,.vue ./src babel.config.js"
     },
-    "style": "dist/popup.css",
     "repository": {
         "type": "git",
         "url": "https://github.com/odyzeo/popup.git"
     },
-    "files": [
-        "dist/*",
-        "src/*",
-        "public/*",
-        "*.json",
-        ".js"
-    ],
     "devDependencies": {
         "@babel/eslint-parser": "^7.14.3",
         "@babel/eslint-plugin": "^7.13.16",
@@ -101,13 +102,7 @@
             "parser": "@babel/eslint-parser"
         }
     },
-    "postcss": {
-        "plugins": {
-            "autoprefixer": {}
-        }
-    },
     "browserslist": [
-        "defaults",
-        "> 0.5% in SK"
+        "defaults"
     ]
 }
