@@ -9,6 +9,15 @@
             <div>
                 <label>
                     <input
+                        v-model="disableClose"
+                        type="checkbox"
+                    > disable-close
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input
                         v-model="disableEsc"
                         type="checkbox"
                     > disable-esc
@@ -119,6 +128,7 @@
             </button>
 
             <popup
+                :disable-close="disableClose"
                 :disable-off-click="disableOffClick"
                 :disable-esc="disableEsc"
                 :type="type"
@@ -210,6 +220,7 @@ export default {
             menu: null,
             transition: null,
             type: 'fixed',
+            disableClose: false,
             disableEsc: false,
             disableOffClick: false,
             dynamic: false,

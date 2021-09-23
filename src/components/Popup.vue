@@ -13,6 +13,7 @@
             class="popup__inner"
         >
             <div
+                v-if="!disableClose"
                 class="popup__close"
                 @click.prevent="close"
             >
@@ -40,7 +41,7 @@
 import EventBus from '../plugin/event';
 
 export default {
-    name: 'OdyzeoPopup',
+    name: 'Popup',
 
     props: {
         value: {
@@ -54,6 +55,10 @@ export default {
         type: {
             type: String,
             default: 'fixed',
+        },
+        disableClose: {
+            type: Boolean,
+            default: false,
         },
         disableOffClick: {
             type: Boolean,
