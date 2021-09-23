@@ -99,13 +99,13 @@ export default {
             return this.isOpen ? 'popup--open' : '';
         },
         enableEsc() {
-            return !this.permanent || !this.disableEsc;
+            return this.permanent ? false : !this.disableEsc;
         },
         enableOffClick() {
-            return !this.permanent || !this.disableOffClick;
+            return this.permanent ? false : !this.disableOffClick;
         },
         showCloseButton() {
-            return !this.permanent || !this.disableClose;
+            return this.permanent ? false : !this.disableClose;
         },
     },
 

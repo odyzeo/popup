@@ -9,6 +9,15 @@
             <div>
                 <label>
                     <input
+                        v-model="permanent"
+                        type="checkbox"
+                    > permanent
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input
                         v-model="disableClose"
                         type="checkbox"
                     > disable-close
@@ -135,6 +144,7 @@
                 :transition="transition"
                 :menu="menu"
                 :inline="inline"
+                :permanent="permanent"
                 name="adjustable"
                 @close="onClose"
                 @show="onShow"
@@ -225,6 +235,7 @@ export default {
             disableOffClick: false,
             dynamic: false,
             inline: false,
+            permanent: false,
         };
     },
     computed: {
