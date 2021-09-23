@@ -13,7 +13,7 @@
             class="popup__inner"
         >
             <div
-                v-if="!disableClose"
+                v-if="showCloseButton"
                 class="popup__close"
                 @click.prevent="close"
             >
@@ -76,6 +76,10 @@ export default {
             type: String,
             default: 'fade',
         },
+        permanent: {
+            type: Boolean,
+            default: false,
+        },
         inline: {
             type: Boolean,
             default: false,
@@ -93,6 +97,15 @@ export default {
     computed: {
         classType() {
             return this.isOpen ? 'popup--open' : '';
+        },
+        enableEsc() {
+            return !this.permanent || !this.disableEsc;
+        },
+        enableOffClick() {
+            return !this.permanent || !this.disableOffClick;
+        },
+        showCloseButton() {
+            return !this.permanent || !this.disableClose;
         },
     },
 
@@ -174,7 +187,7 @@ export default {
                 this.addBodyStyles();
             }
 
-            if (!this.disableOffClick) {
+            if (this.enableOffClick) {
                 /**
                  * Need to add listener to end of Call Stack.
                  * this.$nextTick can't be used because it's still in component.
@@ -184,7 +197,7 @@ export default {
                 });
             }
 
-            if (!this.disableEsc) {
+            if (this.enableEsc) {
                 window.addEventListener('keydown', this.escClose);
             }
 
@@ -213,11 +226,11 @@ export default {
                 this.removeBodyStyles();
             }
 
-            if (!this.disableOffClick) {
+            if (this.enableOffClick) {
                 document.removeEventListener('click', this.offClick);
             }
 
-            if (!this.disableEsc) {
+            if (this.enableEsc) {
                 window.removeEventListener('keydown', this.escClose);
             }
 
