@@ -14,6 +14,7 @@ const Plugin = {
 
         this.installed = true;
         this.componentName = options.componentName || defaultComponentName;
+        this.parentSelector = options.parentSelector;
 
         /**
          * Set global reactive property
@@ -54,6 +55,7 @@ const Plugin = {
                     );
                 }
             },
+            parentSelector: this.parentSelector,
         };
 
         /**

@@ -11,7 +11,9 @@ and renderless logic.
 ```
 import Popup from '@odyzeo/popup';
 
-Vue.use(Popup);
+Vue.use(Popup, {
+    parentSelector: '#see-props'
+});
 ```
 
 In your template:
@@ -56,6 +58,7 @@ Anywhere else in your project:
 | `disable-esc`       | boolean | `false`       | Disable closing popup on 'Esc' key                                                                                            |
 | `disable-off-click` | boolean | `false`       | Disable closing popup on click outside the popup                                                                              |
 | `inline`            | boolean | `false`       | Append popup inside its original parent                                                                                       |
+| `parentSelector`    | string  | `null`        | Apply styles and popup inside this element not the body. Useful when you scroll inside different element than body.           |
 | `transition`        | string  | `fade`        | Change or remove opening and closing transitions. <br> Available transitions: <br><br> `fade` <br> `slide-top` <br> `slide-right` <br> `slide-bottom` <br> `slide-left` <br> `null` - no transition <br><br> You can even use your own transition name with styles. It will be transpiled to `popup-transition--${transition}` |
 | `menu`              | string  | `null`        | Will adjust popup inner container to behave as menu wrapper based on direction. <br> Directions: <br><br> `top` <br> `right` <br> `bottom` <br> `left`|
 | `v-model`           | boolean | `false`       | `v-model` property is always automatically synced with <popup> visible state and you can show/hide using v-model |
