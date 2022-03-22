@@ -84,6 +84,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        parentSelector: {
+            type: String,
+            default: null,
+        },
     },
 
     data() {
@@ -95,6 +99,11 @@ export default {
     },
 
     computed: {
+        parent() {
+            return this.parentSelector
+                ? document.querySelector(this.parentSelector) ?? document.body
+                : document.body;
+        },
         classType() {
             return this.isOpen ? 'popup--open' : '';
         },
@@ -154,7 +163,7 @@ export default {
             this.originalParent.appendChild(this.$el);
         },
         appendToBody() {
-            document.body.appendChild(this.$el);
+            this.parent.appendChild(this.$el);
         },
         handleToggleEvent(name, state) {
             if (this.name === name) {
@@ -181,7 +190,7 @@ export default {
         },
         show() {
             this.isOpen = true;
-            this.scrollTop = window.pageYOffset || document.body.scrollTop;
+            this.scrollTop = window.pageYOffset || this.parent.scrollTop;
 
             if (this.type === 'fixed') {
                 this.addBodyStyles();
@@ -237,23 +246,23 @@ export default {
             this.$emit('input', false);
         },
         removePopupFromDOM() {
-            if (document.body.contains(this.$el)) {
+            if (this.parent.contains(this.$el)) {
                 if (this.inline) {
                     this.originalParent.removeChild(this.$el);
                 } else {
-                    document.body.removeChild(this.$el);
+                    this.parent.removeChild(this.$el);
                 }
             }
         },
         addBodyStyles() {
-            document.body.style.width = `${document.body.clientWidth}px`;
-            document.body.classList.add('open-popup');
-            document.body.style.top = `-${this.scrollTop}px`;
+            this.parent.style.width = `${this.parent.clientWidth}px`;
+            this.parent.classList.add('open-popup');
+            this.parent.style.top = `-${this.scrollTop}px`;
         },
         removeBodyStyles() {
-            document.body.style.top = null;
-            document.body.style.width = null;
-            document.body.classList.remove('open-popup');
+            this.parent.style.top = null;
+            this.parent.style.width = null;
+            this.parent.classList.remove('open-popup');
             window.scrollTo(0, this.scrollTop);
         },
         offClick(ev) {

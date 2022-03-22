@@ -3,7 +3,7 @@
         id="app"
         class="app"
     >
-        <div class="container">
+        <div id="inside" class="container">
             <h1>Popup</h1>
 
             <div>
@@ -136,6 +136,16 @@
                 Basic
             </button>
 
+            <hr>
+
+            <button
+                type="button"
+                class="placeholder__button"
+                @click.prevent="$popup.show('inside')"
+            >
+                Inside
+            </button>
+
             <popup
                 :disable-close="disableClose"
                 :disable-off-click="disableOffClick"
@@ -214,6 +224,14 @@
                 </template>
                 <template #close>
                     CLOSE
+                </template>
+            </popup>
+
+            <popup
+                name="inside"
+            >
+                <template>
+                    Hello from the inside
                 </template>
             </popup>
         </div>
