@@ -227,8 +227,11 @@
                 </template>
             </popup>
 
+            <div id="inside-two"></div>
+
             <popup
                 name="inside"
+                parent-selector="#inside-two"
             >
                 <template>
                     Hello from the inside

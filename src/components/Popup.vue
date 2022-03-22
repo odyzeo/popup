@@ -100,9 +100,8 @@ export default {
 
     computed: {
         parent() {
-            return this.parentSelector
-                ? document.querySelector(this.parentSelector) ?? document.body
-                : document.body;
+            const selector = this.parentSelector || this.$popup.parentSelector;
+            return document.querySelector(selector) ?? document.body;
         },
         classType() {
             return this.isOpen ? 'popup--open' : '';

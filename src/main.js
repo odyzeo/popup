@@ -5,7 +5,9 @@ import App from './App';
 
 Vue.config.productionTip = false;
 
-Vue.use(popup);
+Vue.use(popup, {
+    parentSelector: '#inside-no-existing',
+});
 
 new Vue({
     render: (h) => h(App),
