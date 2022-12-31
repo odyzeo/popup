@@ -38,13 +38,13 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.14.3",
         "@babel/eslint-plugin": "^7.13.16",
-        "@vue/cli-plugin-babel": "^4.5.13",
-        "@vue/cli-service": "^4.5.13",
+        "@vue/cli-plugin-babel": "^5.0.8",
+        "@vue/cli-service": "^5.0.8",
         "@vue/eslint-config-airbnb": "^5.3.0",
         "eslint": "^7.23.0",
         "eslint-plugin-vue": "^7.8.0",
         "less": "^3.0.4",
-        "less-loader": "^5.0.0",
+        "less-loader": "^11.1.0",
         "normalize.css": "^8.0.1",
         "vue-template-compiler": "^2.6.12"
     },
