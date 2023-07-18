@@ -3,7 +3,7 @@
     "version": "4.1.0",
     "description": "Odyzeo popup component with Vue",
     "main": "dist/popup.common.js",
-    "module": "src/index.js",
+    "module": "src/plugin/popup.js",
     "source": "src/plugin/popup.js",
     "browser": "dist/popup.umd.min.js",
     "style": "dist/popup.css",
